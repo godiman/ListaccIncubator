@@ -1,0 +1,33 @@
+body{
+
+	background-image: url("sell.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	opacity: all;
+}
+
+.formStyle{
+	width: 500px;
+	padding-top: 40px;
+	padding-bottom: 30px;
+	border-radius: 8px;
+	background-color: #f1f1f1;
+	text-align: center;
+	margin-top: 150px;
+	margin-left: 400px;
+}
+
+input{
+
+	padding: 15px;
+	border-radius: 5px;
+	padding-top: 20px;
+
+}
+
+.form_h2{
+	border-bottom: 1px solid;
+	border-bottom-color: #808080;
+	color: #4c50d1;
+	font-family: elephant;
+}
