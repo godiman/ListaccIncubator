@@ -24,9 +24,9 @@ public class IncubatorTask {
        public static void f_Up()
        {
            //for the first up movement
-                y=+1;
-                last_y=y;
+                y=+1;               
                 position=+1;
+                last_y=y;
         
        }
        
@@ -99,7 +99,7 @@ public class IncubatorTask {
         
         {
             
-             ant = input.nextInt();
+             //ant = input.nextInt();
              
            f_Up();
             if (position == ant) {
