@@ -23,7 +23,7 @@ public class AntOnChessBoard2 {
        int x = 1, y=1;
        int last_x,last_y;
        int numbers;
-       boolean found = false; 
+       
        
        //Get input from the user
         System.out.println("Enter any number to check the position");
@@ -112,8 +112,10 @@ public class AntOnChessBoard2 {
                 }
             }
             
-            if ((numbers>9) && (position >9))  
-            {
+            while((numbers>9) && (position >=9)){
+            if ((numbers>9) && (position >=9))  
+            {   
+                last_y = y;
                 for (; y < last_y+1; ) 
                 {
                             y = y+1;
@@ -145,8 +147,25 @@ public class AntOnChessBoard2 {
                             //System.out.println(x+" "+y);
                             break;
                         }
+                     
+                            //Reduce y till y=1
+                                        for (; y>1; ) 
+                                        {
+                                            y= y-1;
+                                            position = position+1;
+                                                    if (position==numbers) 
+                                                {
+                                                   // System.out.println(x+" "+y);
+                                                    break;
+                                                }
+                                        }
+
+                                             if (numbers==position) {
+                                                 //System.out.println(x+" "+y);
+                                                break;
+                                             }
+            }//end of the if statement
             }
-            
                      if (numbers==position) 
                         {
                             //System.out.println(x+" "+y);
