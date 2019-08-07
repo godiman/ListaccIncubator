@@ -13,119 +13,156 @@ import java.util.Scanner;
  */
 public class IncubatorTask {
     
-     //Scanner object
-        static Scanner input = new Scanner(System.in);
-        
-        //variables declaration
-      static int x=1,y=1,last_x,last_y ;
-      static int position = 1, ant;
-      static boolean found = false;
-       
-       public static void f_Up()
-       {
-           //for the first up movement
-                y=+1;               
-                position=+1;
-                last_y=y;
-        
-       }
-       
-       public static void s_Up()
-       {
-           
-           for (; y <=  last_y; y++) {
-               position=+1;
-               if (position == ant) {
-                   break;
-               }
-           }
-       }
-       
-       public static void down()
-       {
-           last_y = y;
-           for (; y > 1; y--) 
-           {
-              position=+1;
-               if (position == ant) {
-                   break;
-               }
-           }
-       }
-       
-       public static void right()
-       {
-           x = x+1;
-           position=+1;
-           last_x = x;
-          
-       }
-       
-       public static void s_right()
-       {
-           last_x = x;
-           for (; x <= last_x; x++) {
-               position=+1;
-               
-           }
-       }
-       
-        public static void left()
-        {
-           
-           last_x = x;
-           for (; x > 1; x--) 
-           {
-              position=+1;
-               if (position == ant) {
-                   break;
-               }
-           }
-        
-        }
+     
     
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       
-      
-       //Gets input from the user
+        
+        Scanner input = new Scanner(System.in);
+        int numbers, last_x,last_y;
+        int x = 1, y = 1, position = 1;
+        
+        //Gets input from the user
         System.out.println("Enter anny number to check the position");
-        ant = input.nextInt();
-      
-        while((position!= ant) && (ant!=0 ))
+        numbers = input.nextInt();
         
-        {
-            
-             //ant = input.nextInt();
-             
-           f_Up();
-            if (position == ant) {
-                break;
+            while(numbers != position )
+            { 
+                        last_y = y;
+                        for (; y < last_y + 1;) {
+                            y = y+1;
+                            position = position + 1;
+                            if (numbers == position) 
+                                {
+                                    //System.out.println(x+" "+y);
+                                    break;
+                                }
+                        }
+                        if (position >=18) 
+                        {
+                        last_y = y+2;
+                        }else{last_y = y;}
+                         
+                         if (numbers == position) 
+                                {
+                                    //System.out.println(x+" "+y);
+                                    break;
+                                }
+                         last_x  = x;
+                         if (position>=6) 
+                         {
+                              for (; y < last_y+1;) 
+                                {
+                                    y = y+1;
+                                    position = position + 1;
+                                    //increment y = 2, x = 1, position = 2, last_y = 2
+                                    if (numbers == position) 
+                                    {
+                                        //System.out.println(x+" "+y);
+                                        break;
+                                    }         
+                                }
+                                if (numbers == position) 
+                                    {
+                                        //System.out.println(x+" "+y);
+                                        break;
+                                    } 
+                             // x = 1 last_x = 3, y = 3, last_y = 2, position = 9
+                            // Reduce x till is 1
+                            //last_x  = x;
+                            for (; x > 1; ) 
+                            {
+                                x = x-1;
+                                position = position + 1;
+                                if (numbers == position) 
+                                {
+                                    //System.out.println(x+" "+y);
+                                    break;
+                                }
+                            }
+                            
+                            if (numbers == position) 
+                                {
+                                    //System.out.println(x+" "+y);
+                                    break;
+                                }
+                            
+                            y = y + 1;
+                            position = position + 1;
+                            last_y = y;
+                            if (numbers == position) 
+                                {
+                                    //System.out.println(x+" "+y);
+                                    break;
+                                }
+                         }
+                        //last_x = x;
+                        for (; x < last_x+1;)
+                        {
+                            x = x + 1;
+                            position = position + 1;
+                            if (numbers == position) 
+                                {
+                                    //System.out.println(x+" "+y);
+                                    break;
+                                }
+                        }
+                       
+                        //last_x = x;
+                        if (numbers == position) 
+                                {
+                                    //System.out.println(x+" "+y);
+                                    break;
+                                }
+
+                    //Reduce y till y=1, last_y = 2
+                    for (; y>1; ) 
+                    {
+                        y = y-1;
+                        position = position + 1;
+                        if (position == numbers) 
+                        {
+                           // System.out.println(x+" "+y);
+                            break;
+                        }
+                    }
+                    
+                    if (numbers == position) 
+                                {
+                                    //System.out.println(x+" "+y);
+                                    break;
+                                }
+                    
+                    last_x=x;
+                    for (; x < last_x+1;) 
+                    {
+                        x = x + 1;
+                        position = position + 1;
+
+                        if (numbers == position) 
+                        {
+
+                            //System.out.println(x+" "+y);
+                            break;
+                        }
+                    }
+                    
+                     if (numbers == position) 
+                        {
+
+                            //System.out.println(x+" "+y);
+                            break;
+                        }
+                     last_y = y;
+                    
+                    
             }
-            right();
-            if (position == ant) {
-                break;
-            }
-            down();
-            if (position == ant) {
-                break;
-            }
-            s_right();
-            if (position == ant) {
-                break;
-            }
-            s_Up();
-            if (position == ant) {
-                break;
-            }
-            left();
-            
-        }
         
-        System.out.println(x+" "+y);
+        
+             System.out.println(x+" "+y);
        
     }
     
