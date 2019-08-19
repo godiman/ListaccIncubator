@@ -1,0 +1,30 @@
+body{
+	background-color: #f1f1f1;
+}
+h1{
+	color: #0000ff; 
+	text-align: center;
+	font-family: algerian; 
+	font-size: 80px;
+}
+  #menu1 {
+	display: inline;
+	text-align: center;
+	font-family: algerian; 
+	font-size: 20px;
+}
+
+#img1{
+	float: left;
+}
+
+#img2{
+	float: left;
+	position: relative;
+	top: 500px;
+}
+
+address{
+	position: absolute;
+	bottom: -200px;
+}

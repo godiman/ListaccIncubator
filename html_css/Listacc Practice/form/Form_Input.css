@@ -1,6 +1,6 @@
 body{
 
-	background-image: url("sell.png");
+	background-image: url("./images/sell.png");
 	background-repeat: no-repeat;
 	background-size: 100%;
 	opacity: all;
@@ -20,14 +20,34 @@ body{
 input{
 
 	padding: 15px;
+
 	border-radius: 5px;
+	border-color: #08088A;
 	padding-top: 20px;
+	font-size: 50;
 
 }
 
 .form_h2{
 	border-bottom: 1px solid;
 	border-bottom-color: #808080;
-	color: #4c50d1;
+	color: #01426a;
 	font-family: elephant;
+	font-size: 35px;
+}
+
+#put1{
+		width: 220px;
+
+}
+
+#btn{
+	background-color: #69bcd5;
+	width: 150px;
+	font-size: 20px;
+
+}
+
+label a {
+	text-decoration: none;
 }
