@@ -16,7 +16,6 @@ namespace WebAPI.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        int[] myArray;
         public string text1;
         private readonly DataContext readContext;
 
@@ -45,15 +44,15 @@ namespace WebAPI.Controllers
         [HttpGet("GetUserByGender/{gender}")]
         public IActionResult GetUserByGender(string gender)
         {
-           var user1 = readContext.users.Where(a => a.gender == gender);
+           var user1 = readContext.users.Where(a => a.gender == gender).ToList();
            return Ok(user1);
         }
 
-         [HttpGet("LogIn/{username}/{password}")]
-        public IActionResult LogIn(string username, string password)
+         [HttpPost("LogIn")]
+        public IActionResult LogIn(User user)
         {
            var login = readContext.users.
-           Where(i => i.userName.CompareTo(username) == 0 && i.password.CompareTo(password) == 0).ToList();
+           Where(i => i.userName.CompareTo(user.userName) == 0 && i.password.CompareTo(user.password) == 0).ToList();
            return Ok(login);
         }
 
@@ -81,9 +80,20 @@ namespace WebAPI.Controllers
         }
 
         // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("DeleteByID/{id}")]
+        public void DeleteByID(int id)
         {
+           var del = readContext.users.Where(c => c.id == id).FirstOrDefault();
+           readContext.Remove(del);
+           readContext.SaveChanges();
+        }
+
+         [HttpDelete("DeleteByName/{name}")]
+        public void DeleteByName(string name)
+        {
+           var delName = readContext.users.Where(c => c.lastName == name).FirstOrDefault();
+           readContext.Remove(delName);
+           readContext.SaveChanges();
         }
 
     }
