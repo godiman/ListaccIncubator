@@ -16,7 +16,7 @@ namespace WebAPI.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        public string text1;
+        
         private readonly DataContext readContext;
 
         public ValuesController(DataContext context)
@@ -72,20 +72,32 @@ namespace WebAPI.Controllers
             }  
         }
         
-
         // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("modifyRecord/{id}")]
+        public void modifyRecord(int id, User user)
         {
+           var data = readContext.users.Where(o => o.id == id ).FirstOrDefault();
+            data.lastName = user.lastName;
+            data.firstName = user.firstName;
+            data.email = user.email;
+            data.password = user.password;
+            data.userName = user.userName;
+            data.gender = user.gender;
+           readContext.Update(data);
+           readContext.SaveChanges();
+           
+           
+
         }
 
         // DELETE api/values/5
         [HttpDelete("DeleteByID/{id}")]
-        public void DeleteByID(int id)
+        public IActionResult DeleteByID(int id)
         {
            var del = readContext.users.Where(c => c.id == id).FirstOrDefault();
            readContext.Remove(del);
            readContext.SaveChanges();
+           return NoContent();
         }
 
          [HttpDelete("DeleteByName/{name}")]
