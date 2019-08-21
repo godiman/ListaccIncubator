@@ -1,6 +1,5 @@
 using System;
 using WebAPI.Service;
-using WebAPI.DTO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,8 +18,13 @@ namespace WebAPI.Controllers
         {
             readContext = context;
         }
-        //[HttpGet ("AllMessages")]
-    
+        [HttpPost ("addAddress")]
+        public IActionResult addAddress( Address address)
+        {
+            readContext.Add(address);
+            readContext.SaveChanges();
+            return Ok("Posted");
+        }
 
     }
 }

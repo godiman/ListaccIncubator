@@ -1,6 +1,5 @@
 ﻿using System;
 using WebAPI.Service;
-using WebAPI.DTO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -60,7 +59,8 @@ namespace WebAPI.Controllers
         [HttpPost("AddSomebody")]
         public IActionResult AddSomebody( User user)
         {       
-           if (user == null)
+           
+           if (user.userName == null)
             {
                 return BadRequest("Should not be empty");
             }
