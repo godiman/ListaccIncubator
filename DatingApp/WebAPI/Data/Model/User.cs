@@ -1,20 +1,14 @@
 using System.ComponentModel.DataAnnotations;
 using System;
+using Microsoft.AspNetCore.Identity;
+
 namespace WebAPI.Data.Model
 {
-    public class User
+    public class User: IdentityUser
     {
-        public int id{get; set; }
-        [Required]
         public string lastName{get; set; }
         [Required]
         public string firstName{get; set; }
-        [Required]
-        public string email{get; set; }
-        [Required]
-        public string password{get; set; }
-        [Required]
-        public string userName{get; set; }
         [Required]
         public string gender{get; set; }
         [Required]

@@ -14,6 +14,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using WebAPI.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using WebAPI.Data.Model;
 
 namespace WebAPI
 {
@@ -33,6 +35,7 @@ namespace WebAPI
             .AddJsonOptions(opt =>{
 
             });
+            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<DbContext>().AddDefaultTokenProviders();
 
             services.AddDbContext<DataContext>(con=>con.UseSqlite(
                 Configuration.GetConnectionString("DefaultConnection")));

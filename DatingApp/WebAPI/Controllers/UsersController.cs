@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.Data;
 using WebAPI.Data.Model;
-
-
+using Microsoft.AspNetCore.Identity;
 
 namespace WebAPI.Controllers
 {
@@ -17,14 +16,32 @@ namespace WebAPI.Controllers
     {
         
         private readonly DataContext readContext;
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
 
-        public ValuesController(DataContext context)
+        public ValuesController(DataContext context, 
+        UserManager<User> userManager, SignInManager<User> signInManager )
         {
+           _userManager = userManager;
+           _signInManager = signInManager;
             readContext = context;
+        }
+        [HttpPost("Register")]
+        public async Task<IActionResult> Register(User user)
+        {
+            if (user == null)
+           {
+               return BadRequest("Fields should not be null");
+           }
+           if (ModelState.IsValid)
+           {
+              await _userManager.CreateAsync(user);
+           }
+           return Ok("User was creates");
         }
 
        
-        // GET api/values
+       /*  // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
@@ -48,47 +65,15 @@ namespace WebAPI.Controllers
         }
 
          [HttpPost("LogIn")]
-        public IActionResult LogIn(User user)
-        {
-           var login = readContext.users.
-           Where(i => i.userName.CompareTo(user.userName) == 0 && i.password.CompareTo(user.password) == 0).ToList();
-           return Ok(login);
-        }
+      
 
         // POST api/values
         [HttpPost("AddSomebody")]
-        public IActionResult AddSomebody( User user)
-        {       
-           
-           if (user.userName == null)
-            {
-                return BadRequest("Should not be empty");
-            }
-            else
-            {
-            readContext.Add(user);
-            readContext.SaveChangesAsync();
-            return Ok("Successful");
-            }  
-        }
+       
         
         // PUT api/values/5
         [HttpPut("modifyRecord/{id}")]
-        public void modifyRecord(int id, User user)
-        {
-           var data = readContext.users.Where(o => o.id == id ).FirstOrDefault();
-            data.lastName = user.lastName;
-            data.firstName = user.firstName;
-            data.email = user.email;
-            data.password = user.password;
-            data.userName = user.userName;
-            data.gender = user.gender;
-           readContext.Update(data);
-           readContext.SaveChanges();
-           
-           
-
-        }
+       
 
         // DELETE api/values/5
         [HttpDelete("DeleteByID/{id}")]
@@ -106,7 +91,7 @@ namespace WebAPI.Controllers
            var delName = readContext.users.Where(c => c.lastName == name).FirstOrDefault();
            readContext.Remove(delName);
            readContext.SaveChanges();
-        }
+        }*/
 
     }
 }

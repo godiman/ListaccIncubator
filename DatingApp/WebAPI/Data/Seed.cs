@@ -11,7 +11,7 @@ namespace WebAPI.Data
         public Seed(DataContext context)
         {
             _Context = context;
-            //seedUser();
+            
         }
 
         public async Task seedUser()

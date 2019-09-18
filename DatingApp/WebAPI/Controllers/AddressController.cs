@@ -18,13 +18,13 @@ namespace WebAPI.Controllers
         {
             readContext = context;
         }
-        [HttpPost ("addAddress")]
+      /*   [HttpPost ("addAddress")]
         public IActionResult addAddress( Address address)
         {
             readContext.Add(address);
             readContext.SaveChanges();
             return Ok("Posted");
-        }
+        }*/
 
     }
 }
